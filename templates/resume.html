@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resumen Diario</title>
+</head>
+<body>
+    <h1>Resumen de Ventas</h1>
+    <table>
+        <tr>
+            <th>Fecha</th>
+            <th>Cantidad Ventas</th>
+            <th>Ingresos Totales</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result['_id'] }}</td>
+            <td>{{ result['total_quantity'] }}</td>
+            <td>{{ result['total_earnings'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
