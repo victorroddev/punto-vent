@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="/static/output.css" rel="stylesheet">
+    <title>Venta</title>
 </head>
 <body>
-    <h1>Hola</h1>
+    <div class="flex flex-col bg-blue-500 w-[80%] mx-auto">
+        <h1 class="text-center text-6xl text-white font-semibold mt-8"> Registro de Venta de Menudo</h1>
+        <a href="{{url_for('sale_register')}}" class="text-3xl text-center mt-8 text-white bg-red-600 rounded-lg mx-auto p-6">Registrar venta</a>
+        <a href="{{url_for('daily_resume')}}" class="text-3xl text-center mt-8 text-white bg-orange-600 rounded-lg mx-auto p-6 mb-8">Resumen de ventas</a>
+    </div>
 </body>
 </html>

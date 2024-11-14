@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resumen Diario</title>
+    <link href="/static/output.css" rel="stylesheet">
+</head>
+<body>
+    <div class="flex  flex-col w-[95%] mx-auto">
+        <h1 class="text-5xl text-red-600 text-center mb-6 mt-8">Resumen de Ventas</h1>
+        {% for result in results %}
+        <div class="flex flex-col mx-auto text-center">
+            <div class="bg-blue-600 rounded-lg mb-3 py-4">
+                <h1 class="text-2xl text-white">Fecha</h1>
+                <p class="text-white font-bold">{{ result['_id']}}</p>
+            </div>
+            <div class="bg-blue-600 rounded-lg mb-3 py-4">
+                <h1 class="text-2xl text-white">Litros vendidos</h1>
+                <p class="text-white font-bold">{{ result['total_quantity']}} lts</p>
+            </div>
+            
+            <div class="bg-blue-600 rounded-lg mb-3 py-4">
+                <h1 class="text-2xl text-white">Panes vendidos</h1>
+                <p class="text-white font-bold">{{ result['total_breads']}} pzas</p>
+            </div>
+            <div class="bg-blue-600 rounded-lg mb-3 py-4">
+                <h1 class="text-2xl text-white">Cantidad total</h1>
+                <p class="text-white font-bold">${{ result['total_earnings']}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="flex flex-col">
+        <a href="{{url_for('sale_register')}}" class="mx-auto mt-8 bg-red-600 text-white p-6 text-3xl rounded-lg">Registrar otra venta</a>
+        <a href="{{url_for('daily_resume')}}" class="text-3xl text-center mt-8 text-white bg-orange-600 rounded-lg mx-auto p-6 mb-8">Resumen de ventas</a>
+    </div>
+    
+</body>
+</html>
