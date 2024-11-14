@@ -59,4 +59,4 @@ def change_resume():
     return render_template('resume')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
