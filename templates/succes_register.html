@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/output.css" rel="stylesheet">
+    <title>Venta registrada</title>
+</head>
+<body>
+    <div class="flex flex-col mx-auto mt-8">
+        <h1 class="text-center text-5xl mx-auto">Venta Registrada!</h1>
+        <a href="{{url_for('sale_register')}}" class="mx-auto mt-8 bg-red-600 text-white p-6 text-3xl rounded-lg">Registrar otra venta</a>
+        <a href="{{url_for('daily_resume')}}" class="text-3xl text-center mt-8 text-white bg-orange-600 rounded-lg mx-auto p-6 mb-8">Resumen de ventas</a>
+    </div>
+    
+</body>
+</html>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from datetime import datetime
 
@@ -9,23 +9,30 @@ db = client["ventas"]
 collection = db["ventas diarias"]
 
 
+#ruta de vista principal de la app:
+@app.route('/')
+def home():
+    return render_template('index.html')
+
 #rutas para el formulario de registro de ventas:
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/form_sale', methods=['GET', 'POST'])
 def sale_register():
     """Function for register the sales"""
     if request.method == 'POST':
-        quantity = int(request.form['quantity'])
+        quantity = float(request.form['quantity'])
+        bread = float(request.form['bread'])
         price = float(request.form['price'])
         date = datetime.now()
 
         sale = {
             'quantity' : quantity,
             'price': price,
+            'bread': bread,
             "date": date
         }
         collection.insert_one(sale)
 
-        return "Venta Registrada exitosamente"
+        return render_template('succes_register.html')
     
     return render_template('form_sale.html')
 
@@ -38,6 +45,7 @@ def daily_resume():
             "$group": {
                 "_id": {"$dateToString": {"format": "%Y-%m-%d", "date": "$date"}},
                 "total_quantity": {"$sum": "$quantity"},
+                "total_breads": {"$sum": "$bread" },
                 "total_earnings": {"$sum": "$price"}
             }
         }
@@ -45,6 +53,10 @@ def daily_resume():
     results = list(collection.aggregate(pipeline))
 
     return render_template('resume.html', results=results)
+
+@app.route('/resume')
+def change_resume():
+    return render_template('resume')
 
 if __name__ == '__main__':
     app.run(debug=True)
