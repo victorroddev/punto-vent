@@ -4,7 +4,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-client = MongoClient('mongodb+srv://victordev:jcYVg21SmxpZMe@cluster0.lg82a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+client = MongoClient('mongodb+srv://victorroddev:jcYVg21SmxpZMe@cluster1.te7r4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1')
 db = client["ventas"]
 collection = db["ventas diarias"]
 
@@ -59,4 +59,4 @@ def change_resume():
     return render_template('resume')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
